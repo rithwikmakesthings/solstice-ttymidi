@@ -50,12 +50,12 @@ int port_out_id;
 
 static struct argp_option options[] = 
 {
-	{"serialdevice" , 's', "DEV" , 0, "Serial device to use. Default = /dev/ttyUSB0" },
-	{"baudrate"     , 'b', "BAUD", 0, "Serial port baud rate. Default = 115200" },
+	{"serialdevice" , 's', "DEV" , 0, "Serial device to use. Default = /dev/ttyAMA2" },
+	{"baudrate"     , 'b', "BAUD", 0, "Serial port baud rate. Default = 38400" },
 	{"verbose"      , 'v', 0     , 0, "For debugging: Produce verbose output" },
 	{"printonly"    , 'p', 0     , 0, "Super debugging: Print values read from serial -- and do nothing else" },
 	{"quiet"        , 'q', 0     , 0, "Don't produce any output, even when the print command is sent" },
-	{"name"		, 'n', "NAME", 0, "Name of the Alsa MIDI client. Default = ttymidi" },
+	{"name"		, 'n', "NAME", 0, "Name of the Alsa MIDI client. Default = solsticedev" },
 	{ 0 }
 };
 
@@ -129,12 +129,12 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 void arg_set_defaults(arguments_t *arguments)
 {
-	char *serialdevice_temp = "/dev/ttyUSB0";
+	char *serialdevice_temp = "/dev/ttyAMA2";
 	arguments->printonly    = 0;
 	arguments->silent       = 0;
 	arguments->verbose      = 0;
-	arguments->baudrate     = B115200;
-	char *name_tmp		= (char *)"ttymidi";
+	arguments->baudrate     = B38400;
+	char *name_tmp		= (char *)"solsticedev";
 	strncpy(arguments->serialdevice, serialdevice_temp, MAX_DEV_STR_LEN);
 	strncpy(arguments->name, name_tmp, MAX_DEV_STR_LEN);
 }
